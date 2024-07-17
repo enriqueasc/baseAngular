@@ -1,0 +1,37 @@
+<h4>Listado</h4>
+    <ul class="list-group">
+      <!--
+      Variables especiales dentro del ngFor
+        let i = index;
+        let isFirst = first; // indica si es el primer elemento del array
+        let isLast = last; // indica si es el último elemento del array
+        let isEven = even; // indica si es par
+        let isOdd = odd"  // indica si es impar
+        -->
+      <li
+        *ngFor="let character  of characterList;
+        let i = index;
+        let isFirst = first;
+        let isLast = last;
+        let isEven = even;
+        let isOdd = odd;"
+      class="list-group-item d-flex justify-content-between align-items-center"
+      [ngClass]="{
+        'list-group-item-dark': isLast,
+        'list-group-item-primary': isEven,
+      }"
+      >
+      <div>
+
+        <span class="text-primary">{{i + 1}}. </span>
+        <span>{{character.name}} - </span>
+        <strong> Power: </strong>
+        <span>{{character.power}} </span>
+        <span>Es par: {{isEven}}</span>
+
+      </div>
+      <button (click)="onDeleteCharacter(character.id)" class="btn btn-danger">X</button>
+
+      </li>
+
+    </ul>
